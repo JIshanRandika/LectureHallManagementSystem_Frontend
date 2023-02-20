@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import LecHallsScreen from '../screens/LecHallsScreen';
+import TimeSlotsScreen from '../screens/TimeSlotsScreen';
 import {AuthContext} from '../context/AuthContext';
 import SplashScreen from '../screens/SplashScreen';
 
@@ -31,6 +32,10 @@ const Navigation = () => {
               <Stack.Screen
                   name="LecHalls"
                   component={LecHallsScreen}
+              />
+              <Stack.Screen
+                  name="TimeSlots"
+                  component={TimeSlotsScreen}
               />
             <Stack.Screen
               name="Login"

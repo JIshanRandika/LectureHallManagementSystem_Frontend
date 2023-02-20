@@ -34,6 +34,7 @@ function LecHallsScreen  ({ navigation }) {
 
 
         <TouchableOpacity
+            onPress={() => navigation.navigate('TimeSlots')}
             // onPress={()=>{{
             //     // setUserToken(item.userToken);
             // }}
