@@ -38,6 +38,7 @@ const LoginScreen = ({navigation}) => {
           title="Login"
           onPress={() => {
             login(email, password);
+            navigation.navigate('LecHalls');
           }}
         />
 
@@ -48,6 +49,17 @@ const LoginScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </View>
+        <TouchableOpacity
+            style={{
+              height:50,
+              backgroundColor: "#2b1153",
+              borderRadius:20,
+              padding:10
+            }}
+            onPress={() => navigation.navigate('LecHalls')}
+        >
+          <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>I am a Student</Text>
+        </TouchableOpacity>
     </View>
   );
 };
