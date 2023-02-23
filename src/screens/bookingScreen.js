@@ -40,14 +40,26 @@ const BookingScreen = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <Spinner visible={isLoading} />
+            <View style={{flexDirection:'column', flex:1,alignItems:'center',marginTop:20}}>
+                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#33032F"}}>Selected Lecture Hall : {hallName}</Text>
+                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#33032F"}}>Selected Date : {lecDate.toDateString()}</Text>
+                {timeSlotID ==='1'&&(
+                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#33032F"}}>Time: 8.30am - 10.30am</Text>
+                )}
+                {timeSlotID ==='2'&&(
+                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#33032F"}}>Time: 10.30am - 12.30pm</Text>
+                )}
+                {timeSlotID ==='3'&&(
+                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#33032F"}}>Time: 1.30am - 3.30pm</Text>
+                )}
+                {timeSlotID ==='4'&&(
+                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#33032F"}}>Time: 3.30am - 5.30pm</Text>
+                )}
+
+            </View>
 
 
-                <View style={{flexDirection:'column'}}>
-                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#68189a"}}>LecHall {hallName}</Text>
-                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#183897"}}>lecDate {lecDate.toDateString()}</Text>
-                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#c78535"}}>slot {timeSlotID}</Text>
-                </View>
-            <View>
+            <View style={{flex:5}}>
                 <SafeAreaView>
                     {/*<TextInput*/}
                     {/*    style={styles.input}*/}
@@ -67,21 +79,23 @@ const BookingScreen = ({ route, navigation }) => {
                         // value={text}
                         placeholder="Subject Code"
                     />
+
+                    <TouchableOpacity
+                        style={{
+                            marginTop:10,
+                            backgroundColor: "#33032F",
+                            borderRadius:10,
+                            paddingVertical:10,
+                            paddingHorizontal:'27%'
+                        }}
+                        onPress={()=>submitBooking()}
+                    >
+                        <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Submit</Text>
+                    </TouchableOpacity>
                 </SafeAreaView>
+
             </View>
-            <View style={{flex:2}}>
-                <TouchableOpacity
-                    style={{
-                        height:50,
-                        backgroundColor: "#2b1153",
-                        borderRadius:20,
-                        padding:10
-                    }}
-                    onPress={()=>submitBooking()}
-                >
-                    <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Submit</Text>
-                </TouchableOpacity>
-            </View>
+
 
 
         </View>
@@ -94,6 +108,7 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        borderRadius:10
     },
     container: {
         flex: 1,
