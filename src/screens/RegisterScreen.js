@@ -43,13 +43,28 @@ const RegisterScreen = ({navigation}) => {
           secureTextEntry
         />
 
-        <Button
-          title="Register"
-          onPress={() => {
-            register(name, email, password);
-            navigation.navigate('Login');
-          }}
-        />
+        {/*<Button*/}
+        {/*  title="Register"*/}
+        {/*  onPress={() => {*/}
+        {/*    register(name, email, password);*/}
+        {/*    navigation.navigate('Login');*/}
+        {/*  }}*/}
+        {/*/>*/}
+        <TouchableOpacity
+            style={{
+              marginTop:10,
+              backgroundColor: "#33032F",
+              borderRadius:10,
+              padding:10,
+              paddingHorizontal:'27%'
+            }}
+            onPress={() => {
+              register(name, email, password);
+              navigation.navigate('Login');
+            }}
+        >
+          <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>I am a student</Text>
+        </TouchableOpacity>
 
         <View style={{flexDirection: 'row', marginTop: 20}}>
           <Text>Already have an account? </Text>
