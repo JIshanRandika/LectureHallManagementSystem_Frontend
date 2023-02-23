@@ -47,46 +47,50 @@ function LecHallsScreen  ({ navigation }) {
 
 
 
-        <TouchableOpacity
-            onPress={() => navigation.navigate('TimeSlots',{
-                hallName: item.hallName,
-                lecDate: lecDate
-            })}
-            // onPress={()=>{{
-            //     // setUserToken(item.userToken);
-            // }}
-            // }
-            style={{
-                // flex: 1,
-                marginTop:"3%",
-                alignSelf: 'center',
-                width: "100%",
-                // height: 37,
-                paddingLeft:10,
-                paddingRight:10,
-                paddingTop:10,
-                paddingBottom:10,
-                backgroundColor: "#6ac131",
-                borderRadius:10,
-                shadowColor: "#0090ff",
-                shadowOffset: {
-                    width: 0,
-                    height: 5,
-                },
-                shadowOpacity: 0.34,
-                shadowRadius: 6.27,
+        <>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('TimeSlots',{
+                    hallName: item.hallName,
+                    lecDate: lecDate
+                })}
+                // onPress={()=>{{
+                //     // setUserToken(item.userToken);
+                // }}
+                // }
+                style={{
+                    // flex: 1,
 
-                elevation: 10,
-            }}
+                    marginTop:"3%",
+                    alignSelf: 'center',
+                    width: "100%",
+                    // height: 37,
+                    paddingHorizontal:150,
+                    paddingTop:10,
+                    paddingBottom:10,
+                    backgroundColor: "#97D8B2",
+                    borderRadius:10,
+                    shadowColor: "#0090ff",
+                    shadowOffset: {
+                        width: 0,
+                        height: 5,
+                    },
+                    shadowOpacity: 0.34,
+                    shadowRadius: 6.27,
 
-        >
+                    elevation: 10,
+                }}
+
+            >
 
 
-            <View style={{flexDirection:'row'}}>
-                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#ffffff"}}>{item.hallName}</Text>
-            </View>
+                <View style={{flexDirection:'row'}}>
+                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#531253"}}>{item.hallName}</Text>
+                </View>
 
-        </TouchableOpacity>
+            </TouchableOpacity>
+
+
+        </>
     );
     const renderItem = ({ item }) => {
         return (
@@ -99,20 +103,22 @@ function LecHallsScreen  ({ navigation }) {
     return (
         <View style={styles.container}>
             {/*<Spinner visible={isLoading} />*/}
-            <View style={{flexDirection:'row'}}>
-                <Text>
-                    {lecDate.toDateString()}
-                </Text>
+            <View style={{flexDirection:'column'}}>
+                {/*<Text style={{fontSize:15,backgroundColor:'#531253',paddingHorizontal:'30%', borderRadius:50,color:'white'}}>*/}
+                {/*    {lecDate.toDateString()}*/}
+                {/*</Text>*/}
                 <TouchableOpacity
                     style={{
                         height:42,
-                        backgroundColor: "#2b1153",
+                        backgroundColor: "#33032F",
                         borderRadius:20,
-                        padding:10
+                        padding:10,
+                        paddingHorizontal:'30%',
+                        marginTop:10
                     }}
                     onPress={()=>showDatePicker()}
                 >
-                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Change Date</Text>
+                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>{lecDate.toDateString()}</Text>
                 </TouchableOpacity>
             </View>
 
@@ -133,7 +139,7 @@ function LecHallsScreen  ({ navigation }) {
 
                 {isLoading ? <Text style={{color:'black'}}>Loading...</Text> :(
                     <View style={{
-                        flex: 1,
+                        flex: 12,
                         alignItems: 'center',
                         justifyContent: 'center',
                         width:'100%'
@@ -149,7 +155,7 @@ function LecHallsScreen  ({ navigation }) {
                                 )}
                                 <FlatList
                                     style={{height:"90%", width:'100%'}}
-                                    data={data.reverse()}
+                                    data={data}
                                     renderItem={renderItem}
                                     keyExtractor={(data) => data._id}
                                 />
@@ -160,24 +166,22 @@ function LecHallsScreen  ({ navigation }) {
                 )}
 
             </View>
-            <View style={{flex:2}}>
+            <View style={{flex:1}}>
                 {userInfo.name==null && (
                 <TouchableOpacity
                     style={{
-                        height:50,
-                        backgroundColor: "#2b1153",
-                        borderRadius:20,
-                        padding:10
+                        marginTop:-45,
+                        backgroundColor: "#33032F",
+                        borderRadius:10,
+                        padding:10,
+                        paddingHorizontal:'30%'
                     }}
                     onPress={() => navigation.navigate('Login')}
                 >
-                    <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Login as Lecturer</Text>
+                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Login as Lecturer</Text>
                 </TouchableOpacity>
                 )}
-                {userInfo.name && (
 
-                <Button title="Logout" color="red" onPress={logout} />
-                )}
 
             </View>
         </View>
@@ -186,7 +190,7 @@ function LecHallsScreen  ({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 12,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
