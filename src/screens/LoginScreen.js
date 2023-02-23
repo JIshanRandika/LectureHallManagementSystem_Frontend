@@ -34,13 +34,28 @@ const LoginScreen = ({navigation}) => {
           secureTextEntry
         />
 
-        <Button
-          title="Login"
-          onPress={() => {
-            login(email, password);
-            navigation.navigate('LecHalls');
-          }}
-        />
+        {/*<Button*/}
+        {/*  title="Login"*/}
+        {/*  onPress={() => {*/}
+        {/*    login(email, password);*/}
+        {/*    navigation.navigate('LecHalls');*/}
+        {/*  }}*/}
+        {/*/>*/}
+        <TouchableOpacity
+            style={{
+              marginTop:10,
+              backgroundColor: "#33032F",
+              borderRadius:10,
+              padding:10,
+              paddingHorizontal:'27%'
+            }}
+            onPress={() => {
+              login(email, password);
+              navigation.navigate('LecHalls');
+            }}
+        >
+          <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Login</Text>
+        </TouchableOpacity>
 
         <View style={{flexDirection: 'row', marginTop: 20}}>
           <Text>Don't have an account? </Text>
@@ -51,14 +66,15 @@ const LoginScreen = ({navigation}) => {
       </View>
         <TouchableOpacity
             style={{
-              height:50,
-              backgroundColor: "#2b1153",
-              borderRadius:20,
-              padding:10
+              marginTop:20,
+              backgroundColor: "#33032F",
+              borderRadius:10,
+              padding:10,
+              paddingHorizontal:'27%'
             }}
             onPress={() => navigation.navigate('LecHalls')}
         >
-          <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>I am a Student</Text>
+          <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>I am a student</Text>
         </TouchableOpacity>
     </View>
   );
