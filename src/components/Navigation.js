@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Text, View} from 'react-native';
+import {Button, Text, TouchableOpacity, View} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -14,8 +14,8 @@ import SplashScreen from '../screens/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 
-const Navigation = () => {
-  const {userInfo, splashLoading} = useContext(AuthContext);
+const Navigation = (navigation) => {
+  const {userInfo, splashLoading, logout} = useContext(AuthContext);
 
   return (
     <NavigationContainer>
@@ -41,6 +41,19 @@ const Navigation = () => {
                         headerTitleStyle: {
                             fontWeight: 'bold',
                         },
+                        headerRight: () => (
+
+                            <TouchableOpacity
+                                style={{
+                                    backgroundColor: "#33032F",
+                                    borderRadius:5,
+                                    padding:10
+                                }}
+                                onPress={logout}
+                            >
+                                <Text style={{fontSize: 10, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Logout</Text>
+                            </TouchableOpacity>
+                        ),
                     }}
                     component={LecHallsScreen}
                 />
@@ -56,6 +69,19 @@ const Navigation = () => {
                         headerTitleStyle: {
                             fontWeight: 'bold',
                         },
+                        headerRight: () => (
+
+                            <TouchableOpacity
+                                style={{
+                                    backgroundColor: "#33032F",
+                                    borderRadius:5,
+                                    padding:10
+                                }}
+                                onPress={logout}
+                            >
+                                <Text style={{fontSize: 10, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Logout</Text>
+                            </TouchableOpacity>
+                        ),
                     }}
                     component={BookingScreen}
                 />
@@ -71,6 +97,19 @@ const Navigation = () => {
                         headerTitleStyle: {
                             fontWeight: 'bold',
                         },
+                        headerRight: () => (
+
+                            <TouchableOpacity
+                                style={{
+                                    backgroundColor: "#33032F",
+                                    borderRadius:5,
+                                    padding:10
+                                }}
+                                onPress={logout}
+                            >
+                                <Text style={{fontSize: 10, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Logout</Text>
+                            </TouchableOpacity>
+                        ),
                     }}
                     component={TimeSlotsScreen}
                 />
@@ -100,8 +139,19 @@ const Navigation = () => {
                       headerTitleStyle: {
                           fontWeight: 'bold',
                       },
+
                   }}
                   component={LecHallsScreen}
+              />
+              <Stack.Screen
+                  name="Login"
+                  component={LoginScreen}
+                  options={{headerShown: false}}
+              />
+              <Stack.Screen
+                  name="Register"
+                  component={RegisterScreen}
+                  options={{headerShown: false}}
               />
               <Stack.Screen
                   name="Bookings"
@@ -115,6 +165,7 @@ const Navigation = () => {
                       headerTitleStyle: {
                           fontWeight: 'bold',
                       },
+
                   }}
                   component={BookingScreen}
               />
@@ -130,19 +181,11 @@ const Navigation = () => {
                       headerTitleStyle: {
                           fontWeight: 'bold',
                       },
+
                   }}
                   component={TimeSlotsScreen}
               />
-            <Stack.Screen
-              name="Login"
-              component={LoginScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
-              options={{headerShown: false}}
-            />
+
           </>
         )}
       </Stack.Navigator>
