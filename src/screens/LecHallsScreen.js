@@ -3,12 +3,15 @@ import {Button, StyleSheet, Text, View, TouchableOpacity, SafeAreaView, FlatList
 import Spinner from 'react-native-loading-spinner-overlay';
 import {AuthContext} from '../context/AuthContext';
 import {BASE_URL} from '../config';
+import RNDateTimePicker from '@react-native-community/datetimepicker';
 
 function LecHallsScreen  ({ navigation }) {
     const {userInfo, logout} = useContext(AuthContext);
     const [isLoading, setLoading] = useState(true);
 
     const [data, setData] = useState([]);
+    const [lecDate, setLecDate] = useState(new Date());
+    const [datePickerShow, setDatePickerShow] = useState('F');
 
     useEffect(() => {
 
@@ -29,12 +32,26 @@ function LecHallsScreen  ({ navigation }) {
 
     }, []);
 
+    const showDatePicker = () => {
+        setDatePickerShow('T');
+    }
+
+    const onChangeDatePicker = (event, selectedDate) => {
+
+        setDatePickerShow('F');
+        setLecDate(selectedDate);
+
+    }
+
     const Item = ({ item }) => (
 
 
 
         <TouchableOpacity
-            onPress={() => navigation.navigate('TimeSlots')}
+            onPress={() => navigation.navigate('TimeSlots',{
+                hallName: item.hallName,
+                lecDate: lecDate
+            })}
             // onPress={()=>{{
             //     // setUserToken(item.userToken);
             // }}
@@ -82,6 +99,34 @@ function LecHallsScreen  ({ navigation }) {
     return (
         <View style={styles.container}>
             {/*<Spinner visible={isLoading} />*/}
+            <View style={{flexDirection:'row'}}>
+                <Text>
+                    {lecDate.toDateString()}
+                </Text>
+                <TouchableOpacity
+                    style={{
+                        height:42,
+                        backgroundColor: "#2b1153",
+                        borderRadius:20,
+                        padding:10
+                    }}
+                    onPress={()=>showDatePicker()}
+                >
+                    <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Change Date</Text>
+                </TouchableOpacity>
+            </View>
+
+
+            {datePickerShow ==='T' && (
+                <RNDateTimePicker
+                    testID = 'dateTimePicker'
+                    value = {lecDate}
+                    mode = {'date'}
+                    in24Hour={false}
+                    display='default'
+                    onChange = {onChangeDatePicker}
+                />
+            )}
             <View style={{flex:12}}>
                 {/*<Spinner visible={isLoading} />*/}
 
@@ -116,6 +161,7 @@ function LecHallsScreen  ({ navigation }) {
 
             </View>
             <View style={{flex:2}}>
+                {userInfo.name==null && (
                 <TouchableOpacity
                     style={{
                         height:50,
@@ -127,6 +173,12 @@ function LecHallsScreen  ({ navigation }) {
                 >
                     <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Login as Lecturer</Text>
                 </TouchableOpacity>
+                )}
+                {userInfo.name && (
+
+                <Button title="Logout" color="red" onPress={logout} />
+                )}
+
             </View>
         </View>
     );
