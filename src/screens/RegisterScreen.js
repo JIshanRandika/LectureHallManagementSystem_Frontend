@@ -47,11 +47,12 @@ const RegisterScreen = ({navigation}) => {
           title="Register"
           onPress={() => {
             register(name, email, password);
+            navigation.navigate('Login');
           }}
         />
 
         <View style={{flexDirection: 'row', marginTop: 20}}>
-          <Text>Already have an accoutn? </Text>
+          <Text>Already have an account? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.link}>Login</Text>
           </TouchableOpacity>
