@@ -201,14 +201,13 @@ const TimeSlotsScreen = ({ route, navigation }) => {
 
         <View style={styles.container}>
             <Spinner visible={isLoading} />
-            <View style={{flexDirection:'column'}}>
-                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#00ff0d"}}>LecHall : {hallName}</Text>
-                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#00dbff"}}>lecDate : {lecDate.toDateString()}</Text>
+            <View style={{flexDirection:'column', flex:1,alignItems:'center',marginTop:20}}>
+                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#33032F"}}>Selected Lecture Hall : {hallName}</Text>
+                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#33032F"}}>Selected Date : {lecDate.toDateString()}</Text>
             </View>
 
-            <View>
+            <View style={{flex:11,marginBottom:30}}>
                 <TouchableOpacity
-
                     onPress={() => {userInfo.name && dataSlot1.length===0 && (navigation.navigate('Bookings',{
                         hallName: hallName,
                         lecDate: lecDate,
@@ -217,16 +216,16 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                     }))}}
 
                     style={{
-                        // flex: 1,
+                        flex: 3,
                         marginTop:"3%",
-                        alignSelf: 'center',
-                        width: "100%",
+                        justifyContent:'center',
+                        alignItems:'center',
+                        width: 300,
                         // height: 37,
-                        paddingLeft:10,
-                        paddingRight:10,
+                        paddingHorizontal:10,
                         paddingTop:10,
                         paddingBottom:10,
-                        backgroundColor: "#31c1b0",
+                        backgroundColor: "#A0ACAD",
                         borderRadius:10,
                         shadowColor: "#0090ff",
                         shadowOffset: {
@@ -236,6 +235,7 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                         shadowOpacity: 0.34,
                         shadowRadius: 6.27,
 
+
                         elevation: 10,
                     }}
 
@@ -244,19 +244,18 @@ const TimeSlotsScreen = ({ route, navigation }) => {
 
                     <View style={{flexDirection:'column'}}>
                         <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#ffffff"}}>8.30am-10.30am</Text>
-
                         {dataSlot1.map((item) => (
                             <>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Lecturer Name: {item.lecturerName}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Subject Name: {item.subjectName}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Subject Code: {item.subjectID}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#97D8B2"}}>
                                     Status: {item.status}
                                 </Text>
                                 {userInfo.name === item.lecturerName && (
@@ -264,28 +263,29 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                                         {item.status === "Booked" && (
                                             <TouchableOpacity
                                                 style={{
-                                                    height:50,
-                                                    backgroundColor: "#2b1153",
-                                                    borderRadius:20,
-                                                    padding:10
+                                                    // marginTop:10,
+                                                    backgroundColor: "#33032F",
+                                                    borderRadius:10,
+                                                    paddingVertical:5,
+                                                    paddingHorizontal:'27%'
                                                 }}
                                                 onPress={() => updateTimeSlot("1","Going on")}
                                             >
-                                                <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Start</Text>
+                                                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Start</Text>
                                             </TouchableOpacity>
                                         )}
 
                                         {item.status === "Going on" && (
                                             <TouchableOpacity
                                                 style={{
-                                                    height:50,
-                                                    backgroundColor: "#2b1153",
-                                                    borderRadius:20,
-                                                    padding:10
+                                                    backgroundColor: "#33032F",
+                                                    borderRadius:10,
+                                                    paddingVertical:5,
+                                                    paddingHorizontal:'27%'
                                                 }}
                                                 onPress={() => updateTimeSlot("1","Finished")}
                                             >
-                                                <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>End</Text>
+                                                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>End</Text>
                                             </TouchableOpacity>
                                         )}
 
@@ -310,16 +310,17 @@ const TimeSlotsScreen = ({ route, navigation }) => {
 
                     }))}}
                     style={{
-                        // flex: 1,
+                        flex: 3,
                         marginTop:"3%",
                         alignSelf: 'center',
-                        width: "100%",
+                        justifyContent:'center',
+                        alignItems:'center',
+                        width: 300,
                         // height: 37,
-                        paddingLeft:10,
-                        paddingRight:10,
+                        paddingHorizontal:10,
                         paddingTop:10,
                         paddingBottom:10,
-                        backgroundColor: "#31c1b0",
+                        backgroundColor: "#A0ACAD",
                         borderRadius:10,
                         shadowColor: "#0090ff",
                         shadowOffset: {
@@ -329,6 +330,7 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                         shadowOpacity: 0.34,
                         shadowRadius: 6.27,
 
+
                         elevation: 10,
                     }}
 
@@ -336,19 +338,19 @@ const TimeSlotsScreen = ({ route, navigation }) => {
 
 
                     <View style={{flexDirection:'column'}}>
-                        <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#ffffff"}}>10.30am-12.30am</Text>
+                        <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#ffffff"}}>10.30am-12.30pm</Text>
                         {dataSlot2.map((item) => (
                             <>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Lecturer Name: {item.lecturerName}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Subject Name: {item.subjectName}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Subject Code: {item.subjectID}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#97D8B2"}}>
                                     Status: {item.status}
                                 </Text>
 
@@ -357,28 +359,28 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                                         {item.status === "Booked" && (
                                             <TouchableOpacity
                                                 style={{
-                                                    height:50,
-                                                    backgroundColor: "#2b1153",
-                                                    borderRadius:20,
-                                                    padding:10
+                                                    backgroundColor: "#33032F",
+                                                    borderRadius:10,
+                                                    paddingVertical:5,
+                                                    paddingHorizontal:'27%'
                                                 }}
                                                 onPress={() => updateTimeSlot("2","Going on")}
                                             >
-                                                <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Start</Text>
+                                                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Start</Text>
                                             </TouchableOpacity>
                                         )}
 
                                         {item.status === "Going on" && (
                                             <TouchableOpacity
                                                 style={{
-                                                    height:50,
-                                                    backgroundColor: "#2b1153",
-                                                    borderRadius:20,
-                                                    padding:10
+                                                    backgroundColor: "#33032F",
+                                                    borderRadius:10,
+                                                    paddingVertical:5,
+                                                    paddingHorizontal:'27%'
                                                 }}
                                                 onPress={() => updateTimeSlot("2","Finished")}
                                             >
-                                                <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>End</Text>
+                                                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>End</Text>
                                             </TouchableOpacity>
                                         )}
 
@@ -398,16 +400,16 @@ const TimeSlotsScreen = ({ route, navigation }) => {
 
                     }))}}
                     style={{
-                        // flex: 1,
+                        flex: 3,
                         marginTop:"3%",
-                        alignSelf: 'center',
-                        width: "100%",
+                        justifyContent:'center',
+                        alignItems:'center',
+                        width: 300,
                         // height: 37,
-                        paddingLeft:10,
-                        paddingRight:10,
+                        paddingHorizontal:10,
                         paddingTop:10,
                         paddingBottom:10,
-                        backgroundColor: "#31c1b0",
+                        backgroundColor: "#A0ACAD",
                         borderRadius:10,
                         shadowColor: "#0090ff",
                         shadowOffset: {
@@ -416,6 +418,7 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                         },
                         shadowOpacity: 0.34,
                         shadowRadius: 6.27,
+
 
                         elevation: 10,
                     }}
@@ -427,16 +430,16 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                         <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#ffffff"}}>1.30pm-3.30pm</Text>
                         {dataSlot3.map((item) => (
                             <>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Lecturer Name: {item.lecturerName}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Subject Name: {item.subjectName}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Subject Code: {item.subjectID}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#97D8B2"}}>
                                     Status: {item.status}
                                 </Text>
                                 {userInfo.name === item.lecturerName && (
@@ -444,28 +447,28 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                                         {item.status === "Booked" && (
                                             <TouchableOpacity
                                                 style={{
-                                                    height:50,
-                                                    backgroundColor: "#2b1153",
-                                                    borderRadius:20,
-                                                    padding:10
+                                                    backgroundColor: "#33032F",
+                                                    borderRadius:10,
+                                                    paddingVertical:5,
+                                                    paddingHorizontal:'27%'
                                                 }}
                                                 onPress={() => updateTimeSlot("3","Going on")}
                                             >
-                                                <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Start</Text>
+                                                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Start</Text>
                                             </TouchableOpacity>
                                         )}
 
                                         {item.status === "Going on" && (
                                             <TouchableOpacity
                                                 style={{
-                                                    height:50,
-                                                    backgroundColor: "#2b1153",
-                                                    borderRadius:20,
-                                                    padding:10
+                                                    backgroundColor: "#33032F",
+                                                    borderRadius:10,
+                                                    paddingVertical:5,
+                                                    paddingHorizontal:'27%'
                                                 }}
                                                 onPress={() => updateTimeSlot("3","Finished")}
                                             >
-                                                <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>End</Text>
+                                                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>End</Text>
                                             </TouchableOpacity>
                                         )}
 
@@ -485,16 +488,16 @@ const TimeSlotsScreen = ({ route, navigation }) => {
 
                     }))}}
                     style={{
-                        // flex: 1,
+                        flex: 3,
                         marginTop:"3%",
-                        alignSelf: 'center',
-                        width: "100%",
+                        justifyContent:'center',
+                        alignItems:'center',
+                        width: 300,
                         // height: 37,
-                        paddingLeft:10,
-                        paddingRight:10,
+                        paddingHorizontal:10,
                         paddingTop:10,
                         paddingBottom:10,
-                        backgroundColor: "#31c1b0",
+                        backgroundColor: "#A0ACAD",
                         borderRadius:10,
                         shadowColor: "#0090ff",
                         shadowOffset: {
@@ -503,6 +506,7 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                         },
                         shadowOpacity: 0.34,
                         shadowRadius: 6.27,
+
 
                         elevation: 10,
                     }}
@@ -514,16 +518,16 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                         <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"left",color:"#ffffff"}}>3.30pm-5.30pm</Text>
                         {dataSlot4.map((item) => (
                             <>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Lecturer Name: {item.lecturerName}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Subject Name: {item.subjectName}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#531253"}}>
                                     Subject Code: {item.subjectID}
                                 </Text>
-                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#5800ff"}}>
+                                <Text style={{fontSize: 15, fontWeight: "bold", textAlign: "left", color: "#97D8B2"}}>
                                     Status: {item.status}
                                 </Text>
 
@@ -532,28 +536,28 @@ const TimeSlotsScreen = ({ route, navigation }) => {
                                         {item.status === "Booked" && (
                                             <TouchableOpacity
                                                 style={{
-                                                    height:50,
-                                                    backgroundColor: "#2b1153",
-                                                    borderRadius:20,
-                                                    padding:10
+                                                    backgroundColor: "#33032F",
+                                                    borderRadius:10,
+                                                    paddingVertical:5,
+                                                    paddingHorizontal:'27%'
                                                 }}
                                                 onPress={() => updateTimeSlot("4","Going on")}
                                             >
-                                                <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Start</Text>
+                                                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>Start</Text>
                                             </TouchableOpacity>
                                         )}
 
                                         {item.status === "Going on" && (
                                             <TouchableOpacity
                                                 style={{
-                                                    height:50,
-                                                    backgroundColor: "#2b1153",
-                                                    borderRadius:20,
-                                                    padding:10
+                                                    backgroundColor: "#33032F",
+                                                    borderRadius:10,
+                                                    paddingVertical:5,
+                                                    paddingHorizontal:'27%'
                                                 }}
                                                 onPress={() => updateTimeSlot("4","Finished")}
                                             >
-                                                <Text style={{fontSize: 18, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>End</Text>
+                                                <Text style={{fontSize: 15, fontWeight:"bold", textAlign:"center",color:"#ffffff"}}>End</Text>
                                             </TouchableOpacity>
                                         )}
 
